@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bubble Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #c2f0ff, #e0f7fa);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bubble-image {
+      position: absolute;
+      background-image: url('Layer_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 0;
+      transition: transform 0.3s ease;
+      border-radius: 50%;
+    }
+
+    .bubble-image:hover {
+      transform: scale(1.1);
+    }
+
+    .bubble1  { width: 100px; height: 100px; top: 10vh; left: 5vw; }
+    .bubble2  { width: 90px;  height: 90px;  top: 20vh; right: 10vw; }
+    .bubble3  { width: 90px;  height: 90px;  bottom: 20vh; left: 15vw; }
+    .bubble4  { width: 140px; height: 140px; bottom: 5vh; right: 5vw; }
+    .bubble5  { width: 90px;  height: 90px;  top: 30vh; left: 35vw; }
+    .bubble6  { width: 100px; height: 100px; top: 50vh; right: 25vw; }
+    .bubble7  { width: 90px;  height: 90px;  bottom: 30vh; left: 5vw; }
+    .bubble8  { width: 90px;  height: 90px;  bottom: 5vh; right: 40vw; }
+    .bubble9  { width: 100px; height: 100px; top: 40vh; left: 60vw; }
+    .bubble10 { width: 110px; height: 110px; bottom: 20vh; right: 10vw; }
+
+    .form-container {
+      z-index: 1;
+      width: 90%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 50px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 16px;
+      font-weight: bold;
+      color: #777;
+      text-align: center;
+    }
+
+    .signin-btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #fff;
+      color: #2196f3;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #333;
+      padding: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background-color: #fff;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 14px;
+      font-weight: bold;
+      color: #444;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .social-btn i {
+      color: #2196f3;
+      font-size: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .bubble1, .bubble4, .bubble10 {
+        width: 100px !important;
+        height: 100px !important;
+      }
+
+      .bubble2, .bubble3, .bubble5, .bubble6, .bubble7, .bubble8, .bubble9 {
+        width: 40px !important;
+        height: 40px !important;
+      }
+
+      .form-container {
+        width: 90%;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Bubbles -->
+  <div class="bubble-image bubble1"></div>
+  <div class="bubble-image bubble2"></div>
+  <div class="bubble-image bubble3"></div>
+  <div class="bubble-image bubble4"></div>
+  <div class="bubble-image bubble5"></div>
+  <div class="bubble-image bubble6"></div>
+  <div class="bubble-image bubble7"></div>
+  <div class="bubble-image bubble8"></div>
+  <div class="bubble-image bubble9"></div>
+  <div class="bubble-image bubble10"></div>
+
+  <!-- Form -->
+  <div class="form-container">
+    <input type="text" placeholder="Username" class="input-field" />
+    <input type="password" placeholder="Password" class="input-field" />
+    <button class="signin-btn" onclick="handleSignIn()">Sign in </button>
+    <div class="social-icons">
+      <img src="images/google.png" alt="Google" class="social-icon" onclick="signInWithGoogle()" />
+      <img src="images/facebook.png" alt="Facebook" class="social-icon" onclick="signInWithFacebook()" />
+    </div>
+  </div>
+
+  <!-- JavaScript Functions -->
+<script>
+  function handleSignIn() {
+    alert("Sign in button clicked!");
+  }
+
+  function signInWithGoogle() {
+    alert("Signing in with Google...");
+    // No redirect here
+  }
+
+  function signInWithFacebook() {
+    alert("Signing in with Facebook...");
+    // No redirect here
+  }
+</script>
+
+</body>
+</html>

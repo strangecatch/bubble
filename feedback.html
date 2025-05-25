@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report/Feedback</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #c2f0ff, #a8eaff);
+      position: relative;
+    }
+
+    .icon-btn {
+      position: absolute;
+      top: 20px;
+      font-size: 22px;
+      color: #2196f3;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .back-btn {
+      left: 20px;
+    }
+
+    .settings-btn {
+      right: 20px;
+    }
+
+    h1 {
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 22px;
+      color: #1976d2;
+      z-index: 2;
+    }
+
+    .form-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    input, textarea {
+      width: 80%;
+      max-width: 300px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 20px;
+      background-color: #f0f8ff;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      color: #1976d2;
+      font-weight: bold;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #5a9bd6;
+      font-weight: bold;
+    }
+
+    button.submit-btn {
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a90e2;
+      background-color: #e6f7ff;
+      border: none;
+      border-radius: 24px;
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button.submit-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .bubble-image {
+      position: absolute;
+      background-image: url('Layer_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    .bubble-image:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Buttons -->
+  <button class="icon-btn back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+  <button class="icon-btn settings-btn" onclick="openSettings()"><i class="fas fa-cog"></i></button>
+
+  <!-- Heading -->
+  <h1>Report/Feedback</h1>
+
+  <!-- Feedback Form -->
+  <div class="form-wrapper">
+    <form id="feedbackForm">
+      <input type="text" placeholder="Name" name="name" required />
+      <input type="email" placeholder="Email id" name="email" required />
+      <textarea placeholder="Type your feedback..." name="feedback" required></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <!-- JavaScript for Logic -->
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function openSettings() {
+      window.location.href = "setting.html";
+    }
+
+    document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const feedback = this.feedback.value.trim();
+
+      if (name && email && feedback) {
+        alert("Thank you for your feedback, " + name + "!");
+        this.reset();
+      } else {
+        alert("Please fill in all fields.");
+      }
+    });
+
+    // Bubble generator
+    function createRandomBubbles(count = 8) {
+      const body = document.body;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      for (let i = 0; i < count; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble-image';
+
+        const size = Math.floor(Math.random() * 60) + 40; // 40–100px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+
+        const top = Math.random() * (vh - size);
+        const left = Math.random() * (vw - size);
+
+        bubble.style.top = `${top}px`;
+        bubble.style.left = `${left}px`;
+
+        body.appendChild(bubble);
+      }
+    }
+
+    
+      createRandomBubbles(8);
+    
+  </script>
+</body>
+</html>

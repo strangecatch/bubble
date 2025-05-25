@@ -1,0 +1,140 @@
+<!-- menu.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POP Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #c2f0ff, #a8eaff);
+      overflow: hidden;
+    }
+    .screen {
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .bubble-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .bubble {
+      position: absolute;
+      background-image: url('Layer_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    .bubble1 { width: 10vw; height: 10vw; top: 10%; left: 5%; }
+    .bubble2 { width: 8vw; height: 8vw; top: 20%; right: 10%; }
+    .bubble3 { width: 7vw; height: 7vw; bottom: 25%; left: 15%; }
+    .bubble4 { width: 12vw; height: 12vw; bottom: 10%; right: 5%; }
+    .bubble5 { width: 6vw; height: 6vw; top: 30%; left: 35%; }
+    .bubble6 { width: 8vw; height: 8vw; top: 50%; right: 20%; }
+    .bubble7 { width: 7vw; height: 7vw; bottom: 35%; left: 8%; }
+    .bubble8 { width: 9vw; height: 9vw; bottom: 15%; right: 35%; }
+
+    .title-img {
+      width: 220px;
+      height: auto;
+      margin-bottom: 40px;
+      z-index: 2;
+    }
+    .btn {
+      width: 150px;
+      padding: 15px;
+      margin: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .play-btn {
+      background-color: #00aaff;
+      color: white;
+    }
+    .invite-btn {
+      background-color: white;
+      color: #00aaff;
+      border: 2px solid #00aaff;
+    }
+    .corner-btns {
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 100px;
+      z-index: 2;
+    }
+    .corner-btns img {
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      object-fit: contain;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div class="bubble-bg">
+      <div class="bubble bubble1"></div>
+      <div class="bubble bubble2"></div>
+      <div class="bubble bubble3"></div>
+      <div class="bubble bubble4"></div>
+      <div class="bubble bubble5"></div>
+      <div class="bubble bubble6"></div>
+      <div class="bubble bubble7"></div>
+      <div class="bubble bubble8"></div>
+    </div>
+    <img src="image 6.png" alt="pop logo" class="title-img" />
+    <button class="btn play-btn" onclick="handlePlay()">Play</button>
+    <button class="btn invite-btn" onclick="handleInvite()">Invite</button>
+    <div class="corner-btns">
+      <img src="settings.png" alt="Settings" onclick="handleSettings()">
+      <img src="help.png" alt="Help" onclick="handleHelp()">
+    </div>
+  </div>
+  <script>
+    function handlePlay() {
+      window.location.href = "bubble.html";
+    }
+    function handleInvite() {
+      alert("Invite button clicked!");
+    }
+    function handleSettings() {
+      window.location.href = "setting.html";
+    }
+    function handleHelp() {
+      window.location.href = "Support.html";
+    }
+  </script>
+</body>
+</html>

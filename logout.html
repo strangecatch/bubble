@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(to bottom, #c2f0ff, #a8eaff);
+      font-family: Arial, sans-serif;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden; /* keep bubbles inside viewport */
+    }
+
+    .icon-btn {
+      position: absolute;
+      top: 20px;
+      font-size: 22px;
+      color: #2196f3;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 3; /* keep above bubbles */
+    }
+
+    .back-btn {
+      left: 20px;
+    }
+
+    .center-buttons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 300px;
+      position: absolute;
+      z-index: 2; /* above bubbles */
+    }
+
+    .center-buttons button {
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #1976d2;
+      background-color: #f0f8ff;
+      border: none;
+      border-radius: 24px;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .center-buttons button:hover {
+      transform: scale(1.02);
+      box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Bubble styles */
+    .bubble-image {
+      position: absolute;
+      background-image: url('Layer_1.png'); /* your bubble image */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      opacity: 0.6;
+      z-index: 0; /* behind buttons */
+      transition: transform 0.3s ease;
+    }
+
+    .bubble-image:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="icon-btn back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+
+  <div class="center-buttons">
+    <button onclick="handleLogout()">Logout</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function handleLogout() {
+      const confirmLogout = confirm("Are you sure you want to logout?");
+      if (confirmLogout) {
+        alert("You have been logged out.");
+        // window.location.href = "login.html"; // Redirect if needed
+      }
+    }
+
+    // Bubble generator
+    function createRandomBubbles(count = 8) {
+      const body = document.body;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      for (let i = 0; i < count; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble-image';
+
+        const size = Math.floor(Math.random() * 60) + 40; // 40–100px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+
+        const top = Math.random() * (vh - size);
+        const left = Math.random() * (vw - size);
+
+        bubble.style.top = `${top}px`;
+        bubble.style.left = `${left}px`;
+
+        body.appendChild(bubble);
+      }
+    }
+
+    // Create bubbles on page load
+    createRandomBubbles(8);
+  </script>
+
+</body>
+</html>

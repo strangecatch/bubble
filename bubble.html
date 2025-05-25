@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Bubble Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000;
+      background: linear-gradient(to bottom, #c2f0ff, #a8eaff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      position: relative;
+    }
+
+    .bubble-container {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1400px;
+      padding: 40px;
+      z-index: 3;
+    }
+
+    .bubble {
+      background: radial-gradient(circle at 30% 30%, #ffffff, #b3e5fc);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #0277bd;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      flex-shrink: 0;
+      background-image: url('Layer_1.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 15px 15px rgba(0, 0, 0, 0.15);
+      user-select: none;
+    }
+
+    .bubble:hover {
+      transform: scale(1.2);
+    }
+
+    @media (min-width: 1200px) {
+      .bubble {
+        width: 240px;
+        height: 240px;
+        font-size: 28px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .bubble {
+        width: 180px;
+        height: 180px;
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .bubble-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .bubble {
+        width: 120px;
+        height: 120px;
+        font-size: 16px;
+        
+      }
+    }
+
+    /* Icon buttons */
+    .icon-btn {
+      position: absolute;
+      top: 20px;
+      font-size: 22px;
+      color: #2196f3;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .help-btn {
+      left: 20px;
+    }
+
+    .settings-btn {
+      right: 20px;
+    }
+
+    /* GIF container and responsiveness */
+    .gif-container {
+      position: relative;
+      bottom: 10px;
+      left: 10px;
+      z-index: 2;
+    }
+
+    .gif-wide {
+    position: fixed;
+    top: 0;
+    left: 0;
+     width: 100vw;
+    height: 100vh;
+    object-fit: fill;
+    z-index: 0;
+}
+
+
+    .gif-small {
+      display: none;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    @media (max-width: 600px) {
+      .gif-wide {
+        display: none;
+      }
+      .gif-small {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Buttons -->
+  <button class="icon-btn help-btn" onclick="openHelp()" title="Help">
+    <i class="fas fa-question-circle"></i>
+  </button>
+
+  <button class="icon-btn settings-btn" onclick="openSettings()" title="Settings">
+    <i class="fas fa-cog"></i>
+  </button>
+
+  <div class="bubble-container">
+    <div class="bubble" id="bubble-giggles">Bubble Born</div>
+    <div class="bubble" id="bubble-burst">Giggles</div>
+    <div class="bubble" id="bubble-born">Bubble Burst</div>
+  </div>
+
+  <div class="gif-container">
+    <img src="bubblewidescrreen_1.gif" alt="Wide GIF" class="gif-wide" />
+    <img src="bubble.gif" alt="Small GIF" class="gif-small" />
+  </div>
+
+  <script>
+    
+  
+  document.getElementById('bubble-born').addEventListener('click', () => {
+    window.location.href = "https://editor.p5js.org/ag.jaanvi/full/SSGMWqIEk";
+  });
+
+  document.getElementById('bubble-giggles').addEventListener('click', () => {
+    window.location.href = "https://editor.p5js.org/ag.jaanvi/full/KpjYFpQaJ";
+  });
+
+  document.getElementById('bubble-burst').addEventListener('click', () => {
+    window.location.href = "https://editor.p5js.org/ag.jaanvi/full/j7oBUOtsA";
+  });
+
+  // Top icon functions
+  function openHelp() {
+    window.location.href = "support.html";
+  }
+
+  function openSettings() {
+    window.location.href = "setting.html";
+  }
+
+
+  </script>
+</body>
+</html>
