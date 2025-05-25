@@ -1,0 +1,116 @@
+<!-- pop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POP: A Bubble's Tale</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #c2f0ff, #a8eaff);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .bubbles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background-image: url('Layer_1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); }
+      100% { transform: translateY(-10vh) scale(1); }
+    }
+
+    .title {
+      width: 300px;
+      height: auto;
+      animation: zoomInOut 3s infinite ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes zoomInOut {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      color: #1b4f72;
+      margin-top: 10px;
+      z-index: 2;
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        width: 150px;
+      }
+
+      .subtitle {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div class="bubbles"></div>
+    <img src="image 6.png" alt="pop logo" class="title" />
+    <div class="subtitle">A Bubble’s Tale</div>
+  </div>
+
+  <script>
+    function createBubble(container) {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 60 + 20;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}%`;
+      bubble.style.animationDuration = `${Math.random() * 5 + 4}s`;
+      container.appendChild(bubble);
+
+      setTimeout(() => container.removeChild(bubble), 9000);
+    }
+
+    const bubbleContainer = document.querySelector('.bubbles');
+    setInterval(() => createBubble(bubbleContainer), 500);
+
+    setTimeout(() => {
+      window.location.href = 'menu.html';
+    }, 8000);
+  </script>
+</body>
+</html>
